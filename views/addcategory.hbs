@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Some website</title>
+  <style>
+body {
+  background-color: #93B874;
+}
+</style>
+  <script language="JavaScript">
+    function showInput() {
+        var input = document.getElementById("user_input").value;
+        document.getElementById('display').innerHTML = "Your input is :\n"+input;
+    }
+  </script>
+</head>
+
+<body>
+  {{>header}}
+  <form action="http://localhost:4000/addcategory" method="POST">
+    <center>
+    Name:
+    <br>
+    <input list="name" name="name" autocomplete="off">
+    <datalist id="name">
+      <option value="Adidas">
+      <option value="Nike">
+      <option value="Puma">
+      <option value="Super-Dry">
+      <option value="Reebok">
+    </datalist><br>
+    Product:
+    <br>
+    <input list="prod" name="product" autocomplete="off">
+    <datalist id="prod">
+        <option value="T-Shirt">
+        <option value="Shirt">
+        <option value="Tracks">
+        <option value="Shoes">
+        <option value="Bag">
+    </datalist>
+    <br>
+    Quantity:
+    <br>
+    <input type="number" name="quantity" min="0"  id="user_input" autocomplete="off">
+    <br><br>
+    <input type="submit" value ="Submit"><br>
+  </center>
+  </form>
+</body>
+
+</html>

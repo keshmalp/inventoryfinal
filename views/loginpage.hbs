@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Some website</title>
+    <h1>
+        <center>Hello</center>
+    </h1>
+    <style>
+        a:link {
+            color: green;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: black;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: red;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+
+        a:active {
+            color: blue;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+
+        a:link,
+        a:visited {
+            background-color: #f44336;
+            color: white;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        a:hover,
+        a:active {
+            background-color: red;
+        }
+    </style>
+    <style>
+        .button {
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="/register">Clickhere to register</a>
+    <form action="/" method="POST">
+        <center>
+
+
+            <label for="uname"><b>Username</b></label><br><br>
+            <input type="email" placeholder="email" name="email"><br><br>
+            <label for="psw"><b>Password</b></label><br><br>
+            <input type="password" placeholder="Enter Password" name="password" autocomplete="off"><br><br>
+
+            <input type="submit" value="Submit">Login<br>
+
+
+    </form>
+
+    </center>
+
+</body>
+
+</html>
