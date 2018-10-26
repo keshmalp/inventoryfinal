@@ -1,5 +1,5 @@
 const fs = require('fs');
-const database = require('./database.js');
+
 const products = require('./model/products.js');
 const login = require('./model/login.js');
 var mongoose = require('mongoose');
@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 
 
 var addCategory = (name, product, quantity) => {
-  const database = require('./database.js');
+
   var found = false;
   products.products.findOne({
     $and: [{
@@ -19,7 +19,13 @@ var addCategory = (name, product, quantity) => {
     if (company === null) {
       console.log("Not Found");
       found = false;
-      database.addCategory(name, product, quantity);
+      var newProduct=new products.products({
+        name: name,
+        product: product,
+        quantity: quantity
+      });
+
+  newProduct.save()
     } else {
       found = true;
     }
@@ -76,26 +82,51 @@ var Addquantity = (name, product, quantity) => {
 
 var checklogin = (uname, pwd) => {
 
- login.login.find({
-    
-  }, {}, function(err, log) {
-    if (log === null) {
-      console.log(log);
-    } else {
-      console.log(log);
-    }
-    return log;
-  });
-
-
-
-
+var newuser={
+  name:uname,
+  password:pwd
 };
 
+ login.login.findOne({name:uname}, function(err, docs) {
+      if(docs)
+      {
+        console.log(docs);
+        res.render('register.hbs');
+      }
+      else {
+        var newuser1=new login.login(newuser);
+        newuser1.save()
+
+      }
+    });
+  };
+
+  var Buy = (name, product, quantity) => {
+    var found = false;
+    var myquery = {
+      name: name,
+      product: product
+    };
+    var newvalues = {
+      $inc: {
+        quantity: -quantity
+      }
+    };
+    products.products.updateOne(myquery, newvalues, function(err, res) {
+      if (res.n === 0) {
+        console.log(err);
+      } else {
+        console.log(res);
+        found = true;
+      }
+    });
+    return true;
+  };
 
 module.exports = {
   addCategory,
   Removequantity,
   Addquantity,
-  checklogin
+  checklogin,
+  Buy
 }

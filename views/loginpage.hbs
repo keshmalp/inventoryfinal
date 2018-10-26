@@ -2,83 +2,118 @@
 <html>
 
 <head>
+
+  <body>
     <meta charset="utf-8">
     <title>Some website</title>
     <h1>
         <center>Hello</center>
     </h1>
     <style>
-        a:link {
-            color: green;
-            background-color: transparent;
-            text-decoration: none;
-        }
+    .split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
 
-        a:visited {
-            color: black;
-            background-color: transparent;
-            text-decoration: none;
-        }
+/* Control the left side */
+.left {
+  left: 0;
+  background-color: yellow;
+}
 
-        a:hover {
-            color: red;
-            background-color: transparent;
-            text-decoration: underline;
-        }
+/* Control the right side */
+.right {
+  right: 0;
+  background-color: blue;
+}
 
-        a:active {
-            color: blue;
-            background-color: transparent;
-            text-decoration: underline;
-        }
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
 
-        a:link,
-        a:visited {
-            background-color: #f44336;
-            color: white;
-            padding: 14px 25px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-        }
+/* Style the image inside the centered container, if needed */
+.centered img {
+  width: 150px;
+  border-radius: 50%;
+}
+      a:link {
+        color: green;
+        background-color: transparent;
+        text-decoration: none;
+      }
 
-        a:hover,
-        a:active {
-            background-color: red;
-        }
+      a:visited {
+        color: black;
+        background-color: transparent;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: red;
+        background-color: transparent;
+        text-decoration: underline;
+      }
+
+      a:active {
+        color: blue;
+        background-color: transparent;
+        text-decoration: underline;
+      }
+
+      a:link,
+      a:visited {
+        background-color: #f44336;
+        color: white;
+        padding: 14px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      a:hover,
+      a:active {
+        background-color: red;
+      }
     </style>
     <style>
-        .button {
-            background-color: #4CAF50;
-            /* Green */
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-        }
+      .button {
+        background-color: #4CAF50;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+      }
     </style>
 </head>
 
-<body>
-    <a href="/register">Clickhere to register</a>
-    <form action="/" method="POST">
-        <center>
+<center>
+    <div class="centered">
+      <h1>LOGIN</h1>
+      <form action="/" method="POST">
 
-
-            <label for="uname"><b>Username</b></label><br><br>
-            <input type="email" placeholder="email" name="email"><br><br>
-            <label for="psw"><b>Password</b></label><br><br>
-            <input type="password" placeholder="Enter Password" name="password" autocomplete="off"><br><br>
-
-            <input type="submit" value="Submit">Login<br>
-
-
-    </form>
-
-    </center>
+        <label for="email"><b>Email</b></label><br><br>
+        <input type="email" placeholder="email" name="email" value="gow@gmail.com"><br><br>
+        <label for="psw"><b>Password</b></label><br><br>
+        <input type="password" placeholder="Enter Password" name="password" autocomplete="off" value="gow123"><br><br>
+        <input type="submit" value="Submit"><br>
+      </form>
+      <a href="/register">Click here to register</a><br><br>
+    </div>
+</center>
 
 </body>
 

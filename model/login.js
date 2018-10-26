@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt-nodejs");
-const salt_factor = 8;
-mongoose.set("useCreateIndex", true);
 
-const userSchema = mongoose.Schema({
+
+var login = mongoose.model('login',{
   name: String,
   email: {
     type: String,
@@ -12,13 +10,17 @@ const userSchema = mongoose.Schema({
   password: String,
   role: {
     type: String,
-    enum: ["admin", "public"],
-    default: "public"
+    enum: ["Distributor", "Customer"],
+    default: "Customer"
+  },
+  company:{
+    type: String,
+    enum:["Adidas","Super-Dry","Puma","Nike","Reebok"]
   }
 });
 
-userSchema.methods.generateHash = password => {
-  return bcrypt.hashSync(password, bcrypt.genSaltSync(salt_factor), null);
-};
 
-module.exports = mongoose.model("user", userSchema);
+
+module.exports = {
+  login:login
+}

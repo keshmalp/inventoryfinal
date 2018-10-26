@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "utf-8">
+    <title>Some website</title>
+    <style>
+    body {
+    background-color: #93B874;
+      }
+</style>
+  </head>
+  <body>
+    {{>headercustomer}}
+    <form action="http://127.0.0.1:4000/buy" method="POST">
+      <center>
+      
+      Product:
+      <br>
+      <input list="prod" name="product" autocomplete="off">
+      <datalist id="prod">
+          <option value="T-Shirt">
+          <option value="Shirt">
+          <option value="Tracks">
+          <option value="Shoes">
+          <option value="Bag">
+      </datalist><br>
+      Quantity:
+      <br>
+      <input type="number" name="quantity"  min="0" autocomplete="off">
+      <br><br>
+      <input type="submit" value="Submit">
+    </form>
+
+  </center>
+  </body>
+</html>

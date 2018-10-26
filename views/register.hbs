@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#hide").click(function(){
+        $("p").hide();
+    });
+    $("#show").click(function(){
+        $("p").show();
+    });
+});
+</script>
 <head>
     <title>
         title
@@ -9,14 +19,31 @@
 
 <body>
     <h1>
-        register
+        Register
     </h1>
-    <p>Welcome
-        <h3>This is Register Page</h3>
+    <p>
+        <h3>Register</h3>
         <form action="/register" method="POST">
-            <input type="text" name="username" placeholder="username">
-            <input type="email" name="email" placeholder="email">
-            <input type="password" name="password" placeholder="password">
+          <label for="uname"><b>Username</b></label><br><br>
+          <input type="text" placeholder="username" name="username"><br><br>
+          <label for="uname"><b>Email</b></label><br><br>
+          <input type="email" placeholder="email" name="email"><br><br>
+          <label for="psw"><b>Password</b></label><br><br>
+          <input type="password" placeholder="Enter Password" name="password" autocomplete="off"><br><br>
+          <button id="show"><input type="radio" name="type" value="Distributor">Distributor<br><br></button>
+          <button id="hide"><input type="radio" name="type" value="Customer">Customer<br><br></button>
+          <p>
+            <label for="company"><b>Company</b></label><br><br>
+            <input list="name" name="company" autocomplete="off">
+            <datalist id="name">
+              <option value="Adidas">
+              <option value="Nike">
+              <option value="Puma">
+              <option value="Super-Dry">
+              <option value="Reebok">
+            </datalist><br>
+          </p>
+          <br>
             <button>Submit</button>
         </form>
     </p>
