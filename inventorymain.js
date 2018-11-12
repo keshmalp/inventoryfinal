@@ -1,6 +1,8 @@
 const fs = require("fs");
 const _ = require("lodash");
+const request = require("request");
 const yargs = require("yargs");
+var querystring = require("querystring");
 const express = require("express");
 const hbs = require("hbs");
 const path = require("path");
@@ -12,10 +14,36 @@ const login = require("./model/login.js");
 const app = express();
 const products = require("./model/products.js");
 var crypto = require("crypto");
+var http = require("http");
 const definitions = require("./definitions.js");
 var meraname = "Adidas";
 var mName = "Adidas";
 
+//Initiating blockchain
+
+var chain_init = {
+  host: "localhost",
+  port: "3000",
+  path: "/create",
+  method: "POST"
+};
+
+var chain_add = {
+  host: "localhost",
+  port: "3000",
+  path: "/addblock",
+  method: "POST"
+};
+
+var post_req = http.request(chain_init, function(res) {
+  res.setEncoding("utf8");
+});
+var post_req2 = http.request(chain_add, function(res) {
+  res.setEncoding("utf8");
+});
+
+var data = products.products.find({});
+var Content = querystring.stringify(data);
 hbs.registerPartials(__dirname + "/views/partials");
 mongoose.connect(
   "mongodb://localhost/inventory",
@@ -146,6 +174,12 @@ app.post("/register", function(req, res, next) {
   });
 });
 app.get("/addcategory", (req, res) => {
+  // post_req.write(Content);
+  // post_req.end();
+  // post_req2.write("Adidas");
+  // var value = products.products.find({});
+  // console.log(Content);
+  // post_req2.end();
   res.render("addcategory.hbs", {
     pageTitle: "Add Category"
   });
@@ -168,6 +202,10 @@ app.post("/addcategory", function(req, res) {
     req.body.product,
     parseInt(req.body.quantity)
   );
+
+  var value = querystring.stringify(req.body);
+  console.log(value);
+  request.post("http://localhost:3000/addblock", { form: { key: value } });
   console.log("Returned: " + bool);
   var message = bool
     ? "Product Category was added"
